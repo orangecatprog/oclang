@@ -1,0 +1,17 @@
+import { createToken } from "chevrotain";
+
+export const LeftParen = createToken({ name: "LeftParen", pattern: /\(/ });
+export const RightParen = createToken({ name: "RightParen", pattern: /\)/ });
+
+export const LeftBrace = createToken({ name: "LeftBrace", pattern: /\{/ });
+export const RightBrace = createToken({ name: "RightBrace", pattern: /\}/ });
+
+export const LeftBracket = createToken({ name: "LeftBracket", pattern: /\[/ });
+export const RightBracket = createToken({ name: "RightBracket", pattern: /\]/ });
+
+export const LeftTag = createToken({ name: "LeftTag", pattern: /</ });
+export const RightTag = createToken({ name: "RightTag", pattern: />/ });
+
+export const Comma = createToken({ name: "Comma", pattern: /,/ });
+
+export const delimiters = [LeftParen, RightParen, LeftBrace, RightBrace, LeftBracket, RightBracket, LeftTag, RightTag, Comma];

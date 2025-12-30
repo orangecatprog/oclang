@@ -1,0 +1,19 @@
+{
+  "name": "oclang",
+  "version": "0.3.0",
+  "description": "A programming language",
+  "author": "LuisRG-L, Orange Cat",
+  "license": "MIT",
+  "type": "module",
+  "module": "src/index.ts",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "chevrotain": "^11.0.3"
+  }
+}
