@@ -1,0 +1,7 @@
+# Modules and packages
+
+node_modules/
+
+# Test files
+
+tests/

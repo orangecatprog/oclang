@@ -12,7 +12,6 @@ import { ValueType } from "../../shared/models/value.js";
 import { solveString } from "./utils/string.js";
 import type { AnyStatement, CallStatement, FunctionStatement, PrintStatement, VariableStatement } from "../ast/types/statements/index.js";
 import { StatementKind } from "../ast/types/base/statement.js";
-import type { Variable } from "../../shared/models/var.js";
 
 export function run(ast: AnyStatement[], context: CoreContext) {
 

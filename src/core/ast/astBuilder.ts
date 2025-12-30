@@ -1,17 +1,7 @@
-import {
-	AlreadyDeclaredFunctionError,
-	AlreadyDeclaredVariableError,
-	CantModifyConstError,
-} from "../../shared/manager/errors/semantic/undefined/declared.js";
-import {
-	UndeclaredFunctionError,
-	UndeclaredVariableError,
-} from "../../shared/manager/errors/semantic/undefined/undeclared.js";
 import { createCoreContext, type CoreContext } from "../context/coreContext.js";
 import { ValueType } from "../../shared/models/value.js";
 import { StatementKind } from "./types/base/index.js";
 import type { AnyStatement, PrintStatement } from "./types/statements/index.js";
-import { isNoSubstitutionTemplateLiteral } from "typescript";
 
 export type BuildType = AnyStatement | null;
 
@@ -130,7 +120,7 @@ const functionStatement: FBuilder = (statement: any) => {
 		if (!idToken) return null;
 		const id = idToken.image;
 
-		const body = funcStmt.children.statement ?? [];
+		const body = buildAst(funcStmt) ;
 
 		return {
 			kind: StatementKind.FunctionStatement,

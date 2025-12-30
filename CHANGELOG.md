@@ -26,4 +26,6 @@ PATCH version when you make backwards-compatible bug fixes.
 - Constants and set. Constants can't be modified
 -> AST added
 
-## 0.3.1 - Functions
+### 0.3.1 - BUG-001A-030-MmP
+
+- BUG-001A-030-MmP: Functions don't work
