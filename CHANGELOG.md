@@ -12,11 +12,17 @@ PATCH version when you make backwards-compatible bug fixes.
 
 ## 1.X.X - Beta
 
+### 1.1.0 - REPL
+
+- REPL mode added
+
 ### 1.0.0 - Alpha to beta migration
 
 - Basic CLI
 
 #### 1.0.1 - BUG-002A-100-MmP
+
+- BUG-002A-100-MmP: CLI always uses force mode
 
 ## 0.X.X - Alpha
 

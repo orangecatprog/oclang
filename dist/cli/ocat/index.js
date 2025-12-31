@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { Command } from "commander";
 import { runfile } from "./commands/index.js";
+import { repl } from "./commands/index.js";
 const program = new Command();
 program
     .name("ocat")
@@ -12,4 +13,8 @@ program
     .argument("<file>", "The file to run")
     .option("-f, --force", "Force the execution with other extensions")
     .action(runfile);
+program
+    .command("inline")
+    .description("An REPL for the Orange Cat language")
+    .action(repl);
 program.parse();
