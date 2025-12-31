@@ -3,7 +3,7 @@ import { OcatError } from "../../coreErrors.js";
 export class UndeclaredError extends OcatError {
     constructor(varName, type) {
         super(`Undeclared ${type.toLowerCase()}`);
-        this.message = `${type} ${varName} is not declared`;
+        this.setMessage(`${type} ${varName} is not declared`);
     }
 }
 export class UndeclaredVariableError extends UndeclaredError {

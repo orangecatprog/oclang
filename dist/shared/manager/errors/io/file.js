@@ -1,7 +1,7 @@
 import { OcatError } from "../coreErrors.js";
-export class SyntaxError extends OcatError {
+export class FileDoesntExistError extends OcatError {
     constructor(message) {
-        super("SyntaxError");
+        super("FileDoesn'tExistError");
         this.setMessage(message);
     }
 }

@@ -9,7 +9,11 @@ export class OcatManager {
         this.color = color;
     }
     toString(line = undefined) {
-        return `${this.color.bold(this.name)} ${line && chalk.gray(`at line ${line}`)}: ${this.color.italic(this.message)}`;
+        return `${this.color.bold(this.name)}${line ? chalk.gray(` at line ${line}`) : ""}: ${this.color.italic(this.message)}`;
+    }
+    setMessage(message) {
+        this.message = message;
+        return this;
     }
     throw(line = undefined) {
         console.log(this.toString(line));

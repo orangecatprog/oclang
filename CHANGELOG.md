@@ -10,11 +10,16 @@ MINOR version when you add functionality in a backwards-compatible manner, and
 
 PATCH version when you make backwards-compatible bug fixes.
 
-## 1.X.X - Beta
+## 1.X.X - Beta and CLI
 
 ### 1.1.0 - REPL
 
 - REPL mode added
+
+#### 1.1.1 - BUG-002B-101-MmP
+
+- BUG-002B-100-MmP: The errors in the CLI shows 'undefined'
+- FileDoesntExistError and ExtensionError added
 
 ### 1.0.0 - Alpha to beta migration
 

@@ -3,7 +3,7 @@ import { OcatError } from "../../coreErrors.js";
 export class AlreadyDeclaredError extends OcatError {
     constructor(varName, type) {
         super(`Already declared ${type.toLowerCase()}`);
-        this.message = `${type} ${varName} is already declared`;
+        this.setMessage(`${type} ${varName} is already declared`);
     }
 }
 export class AlreadyDeclaredVariableError extends AlreadyDeclaredError {
@@ -19,6 +19,6 @@ export class AlreadyDeclaredFunctionError extends AlreadyDeclaredError {
 export class CantModifyConstError extends OcatError {
     constructor(varName) {
         super(`Can't modify const variable`);
-        this.message = `Variable ${varName} is const and can't be modified`;
+        this.setMessage(`Variable ${varName} is const and can't be modified`);
     }
 }
