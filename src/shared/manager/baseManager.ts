@@ -17,7 +17,7 @@ export class OcatManager {
 		}: ${this.color.italic(this.message)}`;
 	}
 
-	throw(line: number) {
+	throw(line: number | undefined = undefined): never {
 		console.log(this.toString(line));
 		process.exit(1);
 	}

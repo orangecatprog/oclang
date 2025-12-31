@@ -1,5 +1,5 @@
-import { ContextType } from "../../../../../core/context/contextType";
-import { OcatError } from "../../coreErrors";
+import { ContextType } from "../../../../../core/context/contextType.js";
+import { OcatError } from "../../coreErrors.js";
 
 export class UndeclaredError extends OcatError {
 	constructor(varName: string, type: ContextType) {

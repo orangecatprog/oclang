@@ -6,6 +6,13 @@
   "license": "MIT",
   "type": "module",
   "module": "src/index.ts",
+  "bin": {
+    "ocat": "dist/cli/ocat/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "tsc && npm link --force"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
@@ -13,7 +20,10 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@types/node": "^25.0.3",
     "chalk": "^5.6.2",
-    "chevrotain": "^11.0.3"
+    "chevrotain": "^11.0.3",
+    "commander": "^14.0.2",
+    "inquirer": "^13.1.0"
   }
 }

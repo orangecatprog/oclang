@@ -1,8 +1,8 @@
-import { ocatLexer } from "./lexer/tokens";
-import { OcatParser } from "./parser/parser";
-import { run } from "./runner/runner";
-import { createCoreContext } from "./context/coreContext";
-import { buildAst } from "./ast/astBuilder";
+import { ocatLexer } from "./lexer/tokens.js";
+import { OcatParser } from "./parser/parser.js";
+import { run } from "./runner/runner.js";
+import { createCoreContext } from "./context/coreContext.js";
+import { buildAst } from "./ast/astBuilder.js";
 
 export function execute(code: string) {
 	const lexingResult = ocatLexer.tokenize(code);
