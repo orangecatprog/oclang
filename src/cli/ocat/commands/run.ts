@@ -5,14 +5,18 @@ import chalk from "chalk";
 
 import fs from "fs";
 
-export function runfile(file: string, force: boolean) {
-    if (!file.endsWith(".ocat") && !force) { 
+export interface RunCommandOptions {
+    force: boolean;
+}
+
+export function runfile(file: string, options: RunCommandOptions) {
+    if (!file.endsWith(".ocat") && !options.force) { 
         new OcatError("File must be a .ocat file. Use -f to force execution with other extensions")
             .throw();
         process.exit(1);
     }
 
-    if (force) {
+    if (options.force) {
         console.log(chalk.blue(`Running in force mode`));
     }
 

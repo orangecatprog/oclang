@@ -2,16 +2,15 @@ import { execute } from "../../../core/index.js";
 import { OcatError } from "../../../shared/manager/errors/coreErrors.js";
 import chalk from "chalk";
 import fs from "fs";
-export function runfile(file, force) {
-    if (!file.endsWith(".ocat") && !force) {
+export function runfile(file, options) {
+    if (!file.endsWith(".ocat") && !options.force) {
         new OcatError("File must be a .ocat file. Use -f to force execution with other extensions")
             .throw();
         process.exit(1);
     }
-    if (force) {
+    if (options.force) {
         console.log(chalk.blue(`Running in force mode`));
     }
     const fileText = fs.readFileSync(file, "utf8");
-    console.log(fileText);
     execute(fileText);
 }

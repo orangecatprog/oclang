@@ -16,6 +16,8 @@ PATCH version when you make backwards-compatible bug fixes.
 
 - Basic CLI
 
+#### 1.0.1 - BUG-002A-100-MmP
+
 ## 0.X.X - Alpha
 
 ### 0.3.0 - Generics
