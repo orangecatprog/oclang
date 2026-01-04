@@ -12,6 +12,10 @@ PATCH version when you make backwards-compatible bug fixes.
 
 ## 1.X.X - Beta and CLI
 
+### 1.2.0 - OCM
+
+- OCM mode added
+
 ### 1.1.0 - REPL
 
 - REPL mode added

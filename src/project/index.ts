@@ -25,6 +25,7 @@ export function createProject(ps: ProjectSettings) {
 				name: ps.name,
 				version: "1.0.0",
 				description: "",
+				id: ps.id, 
 				...addIf(ps.type !== ProjectType.Lib, { main: path.join("src", "main.ocat") }),
 				type: ps.type.toLowerCase(),
 			},

@@ -6,5 +6,6 @@ export enum ProjectType {
 export interface ProjectSettings {
 	name: string;
 	dir: string;
+	id: string;
 	type: ProjectType;
 }

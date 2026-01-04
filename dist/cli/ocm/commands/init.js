@@ -2,6 +2,7 @@ import inquirer from "inquirer";
 import chalk, {} from "chalk";
 import { chalkText } from "../../utils/chalkText.js";
 import { createProject } from "../../../project/index.js";
+import { fromCamelToDash } from "../../../shared/utils/strformat.js";
 export async function init() {
     const projectTypes = [{ name: "App", color: chalk.red }, { name: "Lib", color: chalk.yellow }];
     const answers = await inquirer.prompt([
@@ -9,13 +10,19 @@ export async function init() {
             type: "input",
             name: "name",
             message: "How do you want to name your project?",
-            default: "my-project",
+            default: "myProject",
         },
         {
             type: "input",
             name: "dir",
             message: "Where do you want to create your project?",
-            default: "myProject",
+            default: (answers) => answers.name,
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "What is your project ID?",
+            default: (answers) => fromCamelToDash(answers.name),
         },
         {
             type: "select",
