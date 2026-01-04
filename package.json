@@ -7,7 +7,8 @@
   "type": "module",
   "module": "src/index.ts",
   "bin": {
-    "ocat": "dist/cli/ocat/index.js"
+    "ocat": "dist/cli/ocat/index.js",
+    "ocm": "dist/cli/ocm/index.js"
   },
   "scripts": {
     "build": "tsc",
