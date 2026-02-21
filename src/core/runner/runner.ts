@@ -12,6 +12,7 @@ import { ValueType } from "../../shared/models/value.js";
 import { solveString } from "./utils/string.js";
 import type { AnyStatement, CallStatement, FunctionStatement, PrintStatement, VariableStatement } from "../ast/types/statements/index.js";
 import { StatementKind } from "../ast/types/base/statement.js";
+import * as ctx from "../../shared/context/globalContext.js";
 
 export function run(ast: AnyStatement[], context: CoreContext) {
 
@@ -56,11 +57,13 @@ function printStatement(statement: PrintStatement, context: CoreContext) {
 			val = statement.value.value;
 			break;
 	}
-	console.log(val);
+	const info = ctx.get("services").log;
+	info.info(val);
 }
 
 function variableStatement(statement: VariableStatement, context: CoreContext) {
 	const varId = statement.id;
+
 	if (statement.set) {
 		if (!context.variables[varId]) {
 			new UndeclaredVariableError(varId).throw(

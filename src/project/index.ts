@@ -8,6 +8,7 @@ export function createProject(ps: ProjectSettings) {
 	const projectPath = path.resolve(ps.dir);
 	
 	fs.mkdirSync(path.join(projectPath, "src"), { recursive: true });
+	fs.mkdirSync(path.join(projectPath, "connection"), { recursive: true });
 	fs.mkdirSync(path.join(projectPath, ".ocat"), { recursive: true });
 
 	const mainFile = path.join(projectPath, "src", "main.ocat");
@@ -25,7 +26,7 @@ export function createProject(ps: ProjectSettings) {
 				name: ps.name,
 				version: "1.0.0",
 				description: "",
-				id: ps.id, 
+				id: ps.id,
 				...addIf(ps.type !== ProjectType.Lib, { main: path.join("src", "main.ocat") }),
 				type: ps.type.toLowerCase(),
 			},

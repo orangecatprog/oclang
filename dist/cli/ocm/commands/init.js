@@ -36,5 +36,6 @@ export async function init() {
         name: answers.name,
         dir: answers.dir,
         type: answers.type,
+        id: answers.id,
     });
 }

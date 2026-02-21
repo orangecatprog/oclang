@@ -4,6 +4,7 @@ import { createCoreContext } from "../context/coreContext.js";
 import { ValueType } from "../../shared/models/value.js";
 import { solveString } from "./utils/string.js";
 import { StatementKind } from "../ast/types/base/statement.js";
+import * as ctx from "../../shared/context/globalContext.js";
 export function run(ast, context) {
     for (const statement of ast) {
         switch (statement.kind) {
@@ -44,7 +45,8 @@ function printStatement(statement, context) {
             val = statement.value.value;
             break;
     }
-    console.log(val);
+    const info = ctx.get("services").log;
+    info.info(val);
 }
 function variableStatement(statement, context) {
     const varId = statement.id;

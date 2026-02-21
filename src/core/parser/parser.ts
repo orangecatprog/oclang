@@ -18,6 +18,12 @@ export class OcatParser extends CstParser {
 		this.OR([
 			{
 				ALT: () =>
+					this.SUBRULE(this.importStatement, {
+						LABEL: "importStatement",
+					}),
+			},
+			{
+				ALT: () =>
 					this.SUBRULE(this.printStatement, {
 						LABEL: "printStatement",
 					}),
@@ -41,6 +47,11 @@ export class OcatParser extends CstParser {
 					}),
 			},
 		]);
+	});
+
+	public importStatement = this.RULE("importStatement", () => {
+		this.CONSUME(token.Import);
+		this.CONSUME(token.StringLiteral);
 	});
 
 	public printStatement = this.RULE("printStatement", () => {

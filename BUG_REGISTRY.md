@@ -8,6 +8,7 @@ BUG-\<BUG-NUMBER>\<BUG-PART>-\<VERSION>-\<VERSION-FORMAT>
 
 - BUG-002A-100-MmP: CLI always uses force mode
 - BUG-002B-101-MmP: The errors in the CLI shows 'undefined'
+- BUG-002C-100-MmP: Dist folder is not created
 
 ## 0.3.0 bugs
 

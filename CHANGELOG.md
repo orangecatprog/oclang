@@ -16,9 +16,21 @@ PATCH version when you make backwards-compatible bug fixes.
 
 - OCM mode added
 
+#### 1.2.3 - AST Structure
+
+- AST Structure updated
+
+#### 1.2.1 & 1.2.2 - Uploading error
+
+- Uploading error in 1.2.0
+
 ### 1.1.0 - REPL
 
 - REPL mode added
+
+#### 1.1.2 - BUG-002C-100-MmP
+
+- BUG-002C-100-MmP: Dist folder is not created
 
 #### 1.1.1 - BUG-002B-101-MmP
 
