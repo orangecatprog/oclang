@@ -1,8 +1,19 @@
+import type { LoggerService } from "../../core/services/log.service.js";
+
 export interface Context {
 	[key: string]: any;
+	services: Map<string, any>;
 }
 
-let globalContext: Context = {};
+let globalContext: Context = { services: new Map() };
+
+export function pushService(service: any, name: string) {
+	globalContext.services.set(name, service);
+}
+
+export function getService(name: string) {
+	return globalContext.services.get(name);
+}
 
 export function get(key: string) {
 	return globalContext[key];

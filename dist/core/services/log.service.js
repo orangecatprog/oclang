@@ -11,16 +11,14 @@ export class LoggerService {
     constructor(config) {
         this.config = config;
     }
-    log(message, level = LogLevel.Info) {
+    log(message, level = LogLevel.Info, printMsg = message) {
         this.logs.push({ message, level });
-        this.config.interceptors.forEach(interceptor => {
+        this.config.interceptors.forEach((interceptor) => {
             if (interceptor.level === level) {
                 message = interceptor.onLog(message);
             }
         });
-        if (this.config.logs.includes(level)) {
-            console.log(message);
-        }
+        console.log(printMsg);
     }
     debug(message) {
         this.log(message, LogLevel.Debug);
@@ -41,10 +39,12 @@ export class LoggerService {
         this.config.interceptors.push(interceptor);
     }
     removeInterceptor(interceptor) {
-        this.config.interceptors = this.config.interceptors.filter(i => i !== interceptor);
+        this.config.interceptors = this.config.interceptors.filter((i) => i !== interceptor);
     }
     toString() {
-        return this.logs.map(log => `[${log.level}] ${log.message}`).join("\n");
+        return this.logs
+            .map((log) => `[${log.level}] ${log.message}`)
+            .join("\n");
     }
 }
 export const defaultLoggerConfig = {

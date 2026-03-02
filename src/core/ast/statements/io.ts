@@ -1,9 +1,9 @@
-import { ValueType } from "../../../shared/models/value";
-import { StatementKind } from "../types/base";
-import type { PrintStatement } from "../types/statements";
-import type { FBuilder } from "./base";
+import { ValueType } from "../../../shared/models/value.js";
+import { StatementKind } from "../types/base/index.js";
+import type { PrintStatement } from "../types/statements/index.js";
+import type { FBuilder } from "./_base.js";
 
-const printStatement: FBuilder = (statement: any) => {
+const printStatement: FBuilder<PrintStatement> = (statement: any) => {
 	const printStmt = statement.children.printStatement?.[0];
 	if (printStmt) {
 		const strToken = printStmt.children.StringLiteral?.[0];
@@ -22,7 +22,7 @@ const printStatement: FBuilder = (statement: any) => {
 					value: strToken.image,
 					type: ValueType.String,
 				},
-			} as PrintStatement;
+			};
 		}
 
 		const idToken = printStmt.children.Identifier?.[0];
@@ -46,6 +46,5 @@ const printStatement: FBuilder = (statement: any) => {
 	}
 	return null;
 };
-
 
 export const ioStatements = [printStatement];

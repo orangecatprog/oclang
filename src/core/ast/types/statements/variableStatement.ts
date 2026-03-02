@@ -1,5 +1,5 @@
-import type { Variable } from "../../../../shared/models/var";
-import type { Statement, StatementKind } from "../base";
+import type { Variable } from "../../../../shared/models/var.js";
+import type { Statement, StatementKind } from "../base/index.js";
 
 export interface VariableStatement extends Statement {
 	kind: StatementKind.VariableStatement;

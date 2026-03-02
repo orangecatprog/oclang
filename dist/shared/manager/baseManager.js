@@ -5,11 +5,13 @@ export class OcatManager {
     message;
     color;
     level;
+    printFn;
     constructor(name, color, level) {
         this.name = name;
         this.message = "";
         this.color = color;
         this.level = level;
+        this.printFn = console.log;
     }
     toString(line = undefined) {
         return `${this.color.bold(this.name)}${line ? chalk.gray(` at line ${line}`) : ""}: ${this.color.italic(this.message)}`;
@@ -22,9 +24,9 @@ export class OcatManager {
         return this;
     }
     throw(line = undefined) {
-        console.log(this.toString(line));
-        const log = ctx.get("services").log;
-        log.log(this.build(line), this.level);
+        const log = ctx.get("services")?.log;
+        const message = this.build(line);
+        log?.log(message, this.level, this.toString(line));
         process.exit(1);
     }
 }

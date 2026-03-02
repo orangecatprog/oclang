@@ -1,5 +1,4 @@
-import type { Value } from "../../../../shared/models/value";
-import type { Statement, StatementKind } from "../base";
+import type { Statement, StatementKind } from "../base/index.js";
 
 export interface CallStatement extends Statement {
 	kind: StatementKind.CallStatement;

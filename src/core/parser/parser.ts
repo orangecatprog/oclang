@@ -4,9 +4,7 @@ import * as token from "../lexer/tokens/index.js";
 
 export class OcatParser extends CstParser {
 	constructor() {
-		super(token.allTokens, {
-			recoveryEnabled: true,
-		});
+		super(token.allTokens, { recoveryEnabled: true });
 		this.performSelfAnalysis();
 	}
 
@@ -50,12 +48,13 @@ export class OcatParser extends CstParser {
 	});
 
 	public importStatement = this.RULE("importStatement", () => {
-		this.CONSUME(token.Import);
-		this.CONSUME(token.StringLiteral);
+		const imp = this.CONSUME(token.Import);
+		const path = this.CONSUME(token.StringLiteral);
+		// opcional: guardar tokens para el AST
 	});
 
 	public printStatement = this.RULE("printStatement", () => {
-		this.CONSUME(token.Output);
+		const output = this.CONSUME(token.Output);
 		this.CONSUME(token.LeftParen);
 		this.OR([
 			...token.literals.map((lit) => ({
@@ -70,17 +69,12 @@ export class OcatParser extends CstParser {
 	});
 
 	public variableStatement = this.RULE("variableStatement", () => {
-		this.OPTION(() => {
-			this.OR([
-				{ ALT: () => this.CONSUME(token.Set, { LABEL: "Set" }) },
-				{ ALT: () => this.CONSUME(token.Const, { LABEL: "Const" }) },
-			]);
-		});
-		const type = this.CONSUME(token.VarType).image as ValueType;
-		this.CONSUME(token.Identifier);
+
+		const typeToken = this.CONSUME(token.VarType);
+		const idToken = this.CONSUME(token.Identifier);
 		this.CONSUME(token.Assign);
 
-		switch (type) {
+		switch (typeToken.image as ValueType) {
 			case ValueType.String:
 				this.CONSUME(token.StringLiteral);
 				break;
@@ -91,11 +85,26 @@ export class OcatParser extends CstParser {
 				this.CONSUME(token.BooleanLiteral);
 				break;
 		}
+
+		return {
+			typeToken, idToken
+		};
 	});
 
 	public functionStatement = this.RULE("functionStatement", () => {
-		this.CONSUME(token.Function);
-		this.CONSUME(token.Identifier);
+		const funcKeyword = this.CONSUME(token.Function);
+		const idToken = this.CONSUME(token.Identifier);
+
+		this.CONSUME(token.LeftParen);
+		this.MANY_SEP({
+			SEP: token.Comma,
+			DEF: () => {
+				this.CONSUME(token.VarType);
+				this.CONSUME2(token.Identifier);
+			},
+		});
+		this.CONSUME(token.RightParen);
+
 		this.CONSUME(token.LeftBrace);
 		this.MANY(() => this.SUBRULE(this.statement));
 		this.CONSUME(token.RightBrace);
@@ -104,5 +113,19 @@ export class OcatParser extends CstParser {
 	public callStatement = this.RULE("callStatement", () => {
 		this.CONSUME(token.Call);
 		this.CONSUME(token.Identifier);
+
+		this.CONSUME(token.LeftParen);
+		this.MANY_SEP({
+			SEP: token.Comma,
+			DEF: () => {
+				this.OR([
+					...token.literals.map((lit) => ({
+						ALT: () => this.CONSUME(lit),
+					})),
+					{ ALT: () => this.CONSUME2(token.Identifier) },
+				]);
+			},
+		});
+		this.CONSUME(token.RightParen);
 	});
 }

@@ -1,4 +1,10 @@
-let globalContext = {};
+let globalContext = { services: new Map() };
+export function pushService(service, name) {
+    globalContext.services.set(name, service);
+}
+export function getService(name) {
+    return globalContext.services.get(name);
+}
 export function get(key) {
     return globalContext[key];
 }

@@ -12,7 +12,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "tsc && npm link --force"
+    "test": "rm -rf dist && tsc && npm link --force"
   },
   "devDependencies": {
     "@types/bun": "latest"

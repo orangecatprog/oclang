@@ -12,6 +12,16 @@ PATCH version when you make backwards-compatible bug fixes.
 
 ## 1.X.X - Beta and CLI
 
+### 1.3.0 - Imports and migration
+
+- Migration to Nodenext in TSconfig
+- Runner structure updated
+- Log system added
+
+#### 1.3.1 - BUG-003A-130-MmP
+
+- BUG-003A-130-MmP: Variables don't work and prints don't work
+
 ### 1.2.0 - OCM
 
 - OCM mode added
@@ -32,7 +42,7 @@ PATCH version when you make backwards-compatible bug fixes.
 
 - BUG-002C-100-MmP: Dist folder is not created
 
-#### 1.1.1 - BUG-002B-101-MmP
+#### 1.1.1 - BUG-002B-100-MmP
 
 - BUG-002B-100-MmP: The errors in the CLI shows 'undefined'
 - FileDoesntExistError and ExtensionError added

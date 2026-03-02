@@ -8,10 +8,5 @@ export function run() {
     context.set("isProject", true);
     context.set("projectConfig", projectConfig);
     context.set("services", {});
-    context.useObject("services", services => {
-        return {
-            log: new LoggerService(defaultLoggerConfig),
-        };
-    });
     runfile(projectConfig.main, { force: false });
 }

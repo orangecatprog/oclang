@@ -3,13 +3,13 @@
 		// Enable latest features
 		"lib": ["ESNext", "DOM"],
 		"target": "ESNext",
-		"module": "ESNext",
+
+		"module": "nodenext",
+		"moduleResolution": "nodenext",
 		"moduleDetection": "force",
 		"jsx": "react-jsx",
 		"allowJs": true,
 
-		// Bundler mode
-		"moduleResolution": "bundler",
 		"verbatimModuleSyntax": true,
 
 		// Best practices

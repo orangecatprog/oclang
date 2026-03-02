@@ -1,5 +1,5 @@
-import type { Variable } from "../../shared/models/var";
-import type { Function } from "../../shared/models/func";
+import type { Variable } from "../../shared/models/var.js";
+import type { Function } from "../../shared/models/func.js";
 
 export interface CoreContext {
 	variables: Record<string, Variable>;	

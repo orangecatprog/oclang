@@ -1,9 +1,11 @@
-import { createCoreContext } from "../../context/coreContext";
-import { buildAst } from "../astBuilder";
-import { StatementKind } from "../types/base";
-import type { FBuilder } from "./base";
+import { createCoreContext } from "../../context/coreContext.js";
+import { buildAst } from "../astBuilder.js";
+import { StatementKind } from "../types/base/index.js";
+import type { CallStatement } from "../types/statements/callStatement.js";
+import type { FunctionStatement } from "../types/statements/functionStatement.js";
+import type { FBuilder } from "./_base.js";
 
-const functionStatement: FBuilder = (statement: any) => {
+const functionStatement: FBuilder<FunctionStatement> = (statement: any) => {
 	const funcStmt = statement.children.functionStatement?.[0];
 	if (funcStmt) {
 		const idToken = funcStmt.children.Identifier?.[0];
@@ -32,7 +34,7 @@ const functionStatement: FBuilder = (statement: any) => {
 	return null;
 };
 
-const callStatement: FBuilder = (statement: any) => {
+const callStatement: FBuilder<CallStatement> = (statement: any) => {
 	const callStmt = statement.children.callStatement?.[0];
 	if (callStmt) {
 		const idToken = callStmt.children.Identifier?.[0];
