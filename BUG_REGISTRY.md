@@ -13,6 +13,7 @@ BUG-\<BUG-NUMBER>\<BUG-PART>-\<VERSION>-\<VERSION-FORMAT>
 ### 1.3.0 bugs
 
 - BUG-003A-130-MmP: Variables don't work and prints don't work
+- BUG-003B-130-MmP: GitAttributes file is not loaded
 
 ## 0.3.0 bugs
 

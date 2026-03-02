@@ -18,9 +18,13 @@ PATCH version when you make backwards-compatible bug fixes.
 - Runner structure updated
 - Log system added
 
+#### 1.3.2 - BUG-003B-130-MmP
+
+- BUG-003B-130-MmP: GitAttributes file is not loaded
+
 #### 1.3.1 - BUG-003A-130-MmP
 
-- BUG-003A-130-MmP: Variables don't work and prints don't work
+- BUG-003A-130-MmP: Variables and prints don't work
 
 ### 1.2.0 - OCM
 
