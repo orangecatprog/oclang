@@ -6,6 +6,7 @@ import { buildAst } from "./ast/astBuilder.js";
 import * as gctx from "../shared/context/globalContext.js";
 import fs from "fs";
 import { defaultLoggerConfig, LoggerService } from "./services/log.service.js";
+import { ModuleService } from "./services/module.service.js";
 export function execute(code) {
     const lexingResult = ocatLexer.tokenize(code);
     const parser = new OcatParser();
@@ -18,7 +19,13 @@ export function execute(code) {
             fs.writeFileSync(".ocat/logs.txt", logs);
         }
     });
-    gctx.pushService(new LoggerService(defaultLoggerConfig), "log");
+    let config = defaultLoggerConfig;
+    if (gctx.get("isProject") && fs.existsSync(".ocat/logcfg.json")) {
+        const cfgText = fs.readFileSync(".ocat/logcfg.json", "utf8");
+        config = JSON.parse(cfgText);
+    }
+    LoggerService.register(config);
+    ModuleService.register();
     const ctx = run(ast, createCoreContext());
     return ctx;
 }

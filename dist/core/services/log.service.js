@@ -1,3 +1,4 @@
+import * as gctx from "../../shared/context/globalContext.js";
 export var LogLevel;
 (function (LogLevel) {
     LogLevel["Debug"] = "DEBUG";
@@ -5,11 +6,22 @@ export var LogLevel;
     LogLevel["Warning"] = "WARNING";
     LogLevel["Error"] = "ERROR";
 })(LogLevel || (LogLevel = {}));
+export const defaultLoggerConfig = {
+    interceptors: [],
+    logs: [LogLevel.Debug, LogLevel.Info],
+};
 export class LoggerService {
     logs = [];
     config;
+    logFilePath;
     constructor(config) {
         this.config = config;
+        if (gctx.get("isProject")) {
+            this.logFilePath = gctx.get("projectPath") + "/.ocat/logs.txt";
+        }
+        else {
+            this.logFilePath = null;
+        }
     }
     log(message, level = LogLevel.Info, printMsg = message) {
         this.logs.push({ message, level });
@@ -46,8 +58,7 @@ export class LoggerService {
             .map((log) => `[${log.level}] ${log.message}`)
             .join("\n");
     }
+    static register(config = defaultLoggerConfig) {
+        gctx.pushService(new LoggerService(config), "log");
+    }
 }
-export const defaultLoggerConfig = {
-    interceptors: [],
-    logs: [LogLevel.Debug, LogLevel.Info],
-};

@@ -5,13 +5,11 @@ export class OcatManager {
     message;
     color;
     level;
-    printFn;
     constructor(name, color, level) {
         this.name = name;
         this.message = "";
         this.color = color;
         this.level = level;
-        this.printFn = console.log;
     }
     toString(line = undefined) {
         return `${this.color.bold(this.name)}${line ? chalk.gray(` at line ${line}`) : ""}: ${this.color.italic(this.message)}`;

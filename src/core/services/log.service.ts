@@ -1,3 +1,5 @@
+import * as gctx from "../../shared/context/globalContext.js";
+
 export enum LogLevel {
 	Debug = "DEBUG",
 	Info = "INFO",
@@ -18,12 +20,23 @@ export interface LoggerConfig {
 	logs: LogLevel[];
 }
 
+export const defaultLoggerConfig: LoggerConfig = {
+	interceptors: [],
+	logs: [LogLevel.Debug, LogLevel.Info],
+};
+
 export class LoggerService {
 	private logs: Log[] = [];
 	private config: LoggerConfig;
+	public logFilePath: string | null;
 
 	constructor(config: LoggerConfig) {
 		this.config = config;
+		if (gctx.get("isProject")) {
+			this.logFilePath = gctx.get("projectPath") + "/.ocat/logs.txt";
+		} else {
+			this.logFilePath = null
+		}
 	}
 
 	log(message: string, level: LogLevel = LogLevel.Info, printMsg: string = message) {
@@ -77,9 +90,8 @@ export class LoggerService {
 			.map((log) => `[${log.level}] ${log.message}`)
 			.join("\n");
 	}
-}
 
-export const defaultLoggerConfig: LoggerConfig = {
-	interceptors: [],
-	logs: [LogLevel.Debug, LogLevel.Info],
-};
+	static register(config: LoggerConfig = defaultLoggerConfig) {
+		gctx.pushService(new LoggerService(config), "log");
+	}
+}

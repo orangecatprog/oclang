@@ -18,6 +18,10 @@ PATCH version when you make backwards-compatible bug fixes.
 - Runner structure updated
 - Log system added
 
+#### 1.3.3 - Import updated
+
+- Import system updated, now supports name without extension and files without extension, with the extension '.ocat' or '.oc'
+
 #### 1.3.2 - BUG-003B-130-MmP
 
 - BUG-003B-130-MmP: GitAttributes file is not loaded

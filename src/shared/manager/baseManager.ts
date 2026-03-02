@@ -7,14 +7,12 @@ export class OcatManager {
 	public message: string;
 	public color: ChalkInstance;
 	public level: LogLevel;
-	public printFn: (message: string) => void;
 
 	constructor(name: string, color: ChalkInstance, level: LogLevel) {
 		this.name = name;
 		this.message = "";
 		this.color = color;
 		this.level = level;
-		this.printFn = console.log;
 	}
 
 	toString(line: number | undefined = undefined): string {

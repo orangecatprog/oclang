@@ -8,6 +8,7 @@ export interface Context {
 let globalContext: Context = { services: new Map() };
 
 export function pushService(service: any, name: string) {
+	if (globalContext.services.has(name)) return;
 	globalContext.services.set(name, service);
 }
 

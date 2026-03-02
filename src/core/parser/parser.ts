@@ -50,7 +50,6 @@ export class OcatParser extends CstParser {
 	public importStatement = this.RULE("importStatement", () => {
 		const imp = this.CONSUME(token.Import);
 		const path = this.CONSUME(token.StringLiteral);
-		// opcional: guardar tokens para el AST
 	});
 
 	public printStatement = this.RULE("printStatement", () => {

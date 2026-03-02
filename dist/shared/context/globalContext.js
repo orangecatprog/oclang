@@ -1,5 +1,7 @@
 let globalContext = { services: new Map() };
 export function pushService(service, name) {
+    if (globalContext.services.has(name))
+        return;
     globalContext.services.set(name, service);
 }
 export function getService(name) {

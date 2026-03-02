@@ -17,12 +17,14 @@ import { printStatement } from "./funcs/io.js";
 import { variableStatement } from "./funcs/variables.js";
 import { callStatement, functionStatement } from "./funcs/functions.js";
 import type { CoreContext } from "../context/coreContext.js";
+import { importStatement } from "./funcs/modules.js";
 
 const statementMap = new Map<StatementKind, RunnerFunc<any>>([
 	[StatementKind.PrintStatement, printStatement],
 	[StatementKind.VariableStatement, variableStatement],
 	[StatementKind.FunctionStatement, functionStatement],
 	[StatementKind.CallStatement, callStatement],
+	[StatementKind.ImportStatement, importStatement],
 ]);
 
 export function run(ast: AnyStatement[], context: CoreContext) {
